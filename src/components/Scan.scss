@@ -1,0 +1,73 @@
+@use '../styles/tokens' as *;
+
+// Compact scan page — fills leftover viewport exactly, no forced scrollbar
+.scan {
+  padding-top: 16px;
+  padding-bottom: 10px;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  @media (min-width: 768px) { padding-top: 20px; align-items: flex-start; }
+
+  &__inner { max-width: 620px; text-align: center; width: 100%; min-height: 0;
+    &--wb { max-width: 1020px; }
+  }
+
+  &--wb { overflow: visible; padding-bottom: 24px; }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 26px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: $primary;
+    margin-bottom: 4px;
+    @media (min-width: 768px) { font-size: 32px; }
+  }
+
+  &__sub { font-size: 13.5px; color: $body-muted; margin-bottom: 20px; }
+  &__upload { text-align: left; margin-bottom: 4px; }
+
+  &__steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 32px;
+    padding-top: 8px;
+  }
+
+  &__step { position: relative; text-align: center; min-width: 0; }
+
+  // dotted connector between circles (hidden on outer edges)
+  &__step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: calc(50% + 24px);
+    right: calc(-50% + 24px);
+    border-top: 1px dashed $hairline;
+    pointer-events: none;
+  }
+
+  &__circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: $primary;
+    color: $pure-white;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__step-title { font-size: 12.5px; font-weight: 600; color: $primary; line-height: 1.3; }
+  &__step-desc { font-size: 11.5px; color: $muted; line-height: 1.4; margin-top: 1px; }
+}

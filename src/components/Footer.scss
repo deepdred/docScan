@@ -1,0 +1,20 @@
+@use '../styles/tokens' as *;
+
+.footer {
+  background: $primary;
+  color: $pure-white;
+  margin-top: 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+  }
+
+  &__brand { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+  &__note { font-size: 12.5px; color: #a9a9b3; }
+}

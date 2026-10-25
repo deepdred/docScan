@@ -1,0 +1,23 @@
+@use '../styles/tokens' as *;
+
+.wbpage {
+  padding-top: 16px;
+  padding-bottom: 24px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  &__inner { width: 100%; }
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: $ink;
+    margin-bottom: 12px;
+    &:hover { text-decoration: underline; text-underline-offset: 4px; }
+  }
+  &__empty { text-align: center; padding: 60px 20px;
+    h1 { font-family: $font-display; font-size: 28px; margin-bottom: 8px; }
+    p { color: $body-muted; margin-bottom: 20px; } }
+}

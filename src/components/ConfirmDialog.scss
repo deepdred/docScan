@@ -1,0 +1,52 @@
+@use '../styles/tokens' as *;
+
+.confirm__overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(23, 23, 28, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  animation: confirm-fade 0.15s ease-out;
+}
+
+.confirm {
+  background: $pure-white;
+  border-radius: $radius-card;
+  padding: 22px;
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+  animation: confirm-pop 0.16s ease-out;
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff5f4;
+    color: $error;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  &__title { font-size: 15px; font-weight: 700; color: $ink; margin-bottom: 6px; }
+  &__message { font-size: 13px; color: $body-muted; line-height: 1.55; margin-bottom: 18px; overflow-wrap: break-word; }
+  &__actions { display: flex; gap: 10px; }
+  &__cancel, &__danger {
+    flex: 1;
+    border-radius: $radius-sm;
+    padding: 9px 0;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: filter 0.12s ease;
+  }
+  &__cancel { background: $neutral-90; border: 1px solid transparent; color: $ink; &:hover { filter: brightness(0.96); } }
+  &__danger { background: $error; border: 1px solid $error; color: #fff; &:hover { filter: brightness(1.08); } }
+}
+
+@keyframes confirm-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes confirm-pop { from { opacity: 0; transform: translateY(6px) scale(0.98); } to { opacity: 1; transform: none; } }

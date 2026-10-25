@@ -1,0 +1,82 @@
+@use '../styles/tokens' as *;
+
+// Minimal centered hero — headline + single upload card
+.hero {
+  padding-top: 64px;
+  padding-bottom: 56px;
+  @media (min-width: 768px) { padding-top: 110px; padding-bottom: 80px; }
+
+  &__inner { text-align: center; max-width: 720px; }
+
+  &__tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $slate;
+    margin-bottom: 22px;
+    white-space: nowrap;
+
+    &::before,
+    &::after {
+      content: '';
+      height: 1px;
+      width: 56px;
+      background: $hairline;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 560px) {
+      white-space: normal;
+      letter-spacing: 0.16em;
+      &::before,
+      &::after { width: 28px; }
+    }
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 40px;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: $primary;
+    margin-bottom: 14px;
+
+    @media (min-width: 768px) { font-size: 60px; }
+  }
+
+  &__sub {
+    font-size: 17px;
+    color: $body-muted;
+    margin-bottom: 32px;
+  }
+
+  &__upload { text-align: left; }
+
+  // One-line animated flow: Drop → Scan → Secure
+  &__flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 36px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $slate;
+    white-space: nowrap;
+  }
+}
+
+.flow-line {
+  display: block;
+  width: 64px;
+  height: 1px;
+  background: $hairline;
+  flex-shrink: 0;
+}

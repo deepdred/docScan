@@ -1,0 +1,102 @@
+@use './tokens' as *;
+
+// ── Reset ───────────────────────────────────────────────
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: $font-body;
+  background: $pure-white;
+  color: $ink;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+img { max-width: 100%; display: block; }
+
+// Cohere focus ring (crawled: 0 0 0 2px #4C6EE6)
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px $focus-blue;
+  border-radius: 4px;
+}
+
+// ── Shared primitives (Cohere button system) ───────────
+// crawled base: rounded-full px-6 py-3, border-2 transparent,
+// transition-all duration-300; header small h-9 px-4
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border-radius: $radius-pill;
+  border: 2px solid transparent;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  &--primary {
+    background: $primary;
+    color: $pure-white;
+    &:hover { background: $pure-black; }
+  }
+
+  &--light {
+    background: $pure-white;
+    color: $neutral-15;
+    &:hover { background: $neutral-90; }
+  }
+
+  &--sm {
+    height: 36px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    padding: 12px 24px;
+    font-size: 18px;
+  }
+}
+
+.text-link {
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  &:hover { color: $action-blue; }
+}
+
+.eyebrow {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $slate;
+}
+
+.page { background: $pure-white; min-height: 100vh; display: flex; flex-direction: column; }
+.page > main { flex: 1; display: flex; flex-direction: column; }
+.page > main > .scan { flex: 1; }
+.page > main > .wbpage { flex: 1; }
+.wrap {
+  width: 100%;
+  max-width: $max-internal;
+  margin: 0 auto;
+  padding-left: $gutter-mobile;
+  padding-right: $gutter-mobile;
+
+  @media (min-width: 1024px) {
+    padding-left: $gutter-desktop;
+    padding-right: $gutter-desktop;
+  }
+}
